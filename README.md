@@ -1,66 +1,23 @@
-## Foundry
+# Capture the Ether
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+[ethernauts source](https://ethernaut.openzeppelin.com/level/22)
 
-Foundry consists of:
+> The goal of this level is for you to hack the basic DEX contract below and steal the funds by price manipulation.
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+> You will start with 10 tokens of token1 and 10 of token2. The DEX contract starts with 100 of each token.
 
-## Documentation
+> You will be successful in this level if you manage to drain all of at least 1 of the 2 tokens from the contract, and allow the contract to report a "bad" price of the assets.
 
-https://book.getfoundry.sh/
+## commands
 
-## Usage
+Run Echidna which finds the attack with the command below. This will run the assertion tests in EchidnaTest.sol.
 
-### Build
-
-```shell
-$ forge build
+```zsh
+echidna . --config config.yaml --contract EchidnaTest --test-limit 10000
 ```
 
-### Test
+Run the forge test which implements the attack with the command below.
 
-```shell
-$ forge test
-```
-
-### Format
-
-```shell
-$ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
+```zsh
+forge test -vvv
 ```
